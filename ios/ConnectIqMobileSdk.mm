@@ -315,7 +315,7 @@ RCT_EXPORT_METHOD(openAppRequest: (NSString*) appId
     }
     NSUUID* appUuid = [[NSUUID alloc] initWithUUIDString: appId];
     IQApp* app = [IQApp appWithUUID:appUuid storeUuid:_storeId device:_device];
-    [[ConnectIQ sharedInstance] sendMessage:message toApp:app progress:nil completion:^(IQSendMessageResult result) {
+    [[ConnectIQ sharedInstance] openAppRequest:app completion:^(IQSendMessageResult result) {
         NSString* resultString;
         switch (result) {
             case IQSendMessageResult_Success:
