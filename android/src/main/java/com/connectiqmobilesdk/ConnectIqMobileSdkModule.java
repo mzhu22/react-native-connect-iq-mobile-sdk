@@ -27,6 +27,7 @@ import com.garmin.android.connectiq.ConnectIQ.IQApplicationInfoListener;
 import com.garmin.android.connectiq.ConnectIQ.IQConnectType;
 import com.garmin.android.connectiq.ConnectIQ.IQDeviceEventListener;
 import com.garmin.android.connectiq.ConnectIQ.IQMessageStatus;
+import com.garmin.android.connectiq.ConnectIQ.IQOpenApplicationStatus;
 import com.garmin.android.connectiq.ConnectIQ.IQSdkErrorStatus;
 import com.garmin.android.connectiq.ConnectIQ.IQSendMessageListener;
 import com.garmin.android.connectiq.IQApp;
@@ -255,10 +256,10 @@ public class ConnectIqMobileSdkModule extends ReactContextBaseJavaModule impleme
       } else if (appId == null) {
         promise.reject(new Exception("No app set"));
       } else {
-        mConnectIQ.openAppRequest(mDevice, new IQApp(appId), new IQSendMessageListener() {
+        mConnectIQ.openApplication(mDevice, new IQApp(appId), new IQSendMessageListener() {
           @Override
-          public void onMessageStatus(IQDevice iqDevice, IQApp iqApp, IQMessageStatus iqMessageStatus) {
-            promise.resolve(iqMessageStatus.name());
+          public void onOpenApplicationResponse(IQDevice iqDevice, IQApp iqApp, IQOpenApplicationStatus status) {
+            promise.resolve(status.name());
           }
         });
       }
