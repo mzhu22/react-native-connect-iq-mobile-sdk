@@ -303,4 +303,61 @@ RCT_EXPORT_METHOD(openStore: (NSString*) appId           resolve:(RCTPromiseReso
     [[ConnectIQ sharedInstance]  showConnectIQStoreForApp:app];
     resolve(nil);
 }
+
+RCT_EXPORT_METHOD(openAppRequest: (NSString*) appId
+                  resolve:(RCTPromiseResolveBlock) resolve
+                  reject:(RCTPromiseRejectBlock) reject)
+{
+    if (appId == nil) {
+        NSError * error = [[NSError alloc] initWithDomain:@"com.github" code:200 userInfo:@{@"Error reason": @"No device set.  Please call setDevice"}];
+        reject(@"error",@"setDevice not called", error);
+        return;
+    }
+    NSUUID* appUuid = [[NSUUID alloc] initWithUUIDString: appId];
+    IQApp* app = [IQApp appWithUUID:appUuid storeUuid:_storeId device:_device];
+    [[ConnectIQ sharedInstance] sendMessage:message toApp:app progress:nil completion:^(IQSendMessageResult result) {
+        NSString* resultString;
+        switch (result) {
+            case IQSendMessageResult_Success:
+                resultString = @"SUCCESS";
+                break;
+            case IQSendMessageResult_Failure_Unknown:
+                resultString = @"FAILURE_UNKNOWN";
+                break;
+            case IQSendMessageResult_Failure_InternalError:
+                resultString = @"FAILURE_INTERNAL_ERROR";
+                break;
+            case IQSendMessageResult_Failure_DeviceNotAvailable:
+                resultString = @"FAILURE_DEVICE_NOT_AVAILABLE";
+                break;
+            case IQSendMessageResult_Failure_AppNotFound:
+                resultString = @"FAILURE_APP_NOT_FOUND";
+                break;
+            case IQSendMessageResult_Failure_DeviceIsBusy:
+                resultString = @"FAILURE_DEVICE_IS_BUSY";
+                break;
+            case IQSendMessageResult_Failure_UnsupportedType:
+                resultString = @"FAILURE_UNSUPPORTED_TYPE";
+                break;
+            case IQSendMessageResult_Failure_InsufficientMemory:
+                resultString = @"FAILURE_INSUFFICIENT_MEMORY";
+                break;
+            case IQSendMessageResult_Failure_Timeout:
+                resultString = @"FAILURE_TIMEOUT";
+                break;
+            case IQSendMessageResult_Failure_MaxRetries:
+                resultString = @"FAILURE_MAX_RETRIES";
+                break;
+            case IQSendMessageResult_Failure_PromptNotDisplayed:
+                resultString = @"FAILURE_PROMPT_NOT_DISPLAYED";
+                break;
+            case IQSendMessageResult_Failure_AppAlreadyRunning:
+                resultString = @"FAILURE_UNSUPPORTED_TYPE";
+                break;
+        }
+        
+        resolve(resultString);
+    }];
+}
+
 @end

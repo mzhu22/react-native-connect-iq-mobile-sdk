@@ -247,6 +247,26 @@ public class ConnectIqMobileSdkModule extends ReactContextBaseJavaModule impleme
       sendMessageInternal(appId, javaMap, promise);
   }
 
+  @ReactMethod
+  public void openAppRequest(String appId, Promise promise) {
+    try {
+      if (mDevice == null) {
+        promise.reject(new Exception("No device connected"));
+      } else if (appId == null) {
+        promise.reject(new Exception("No app set"));
+      } else {
+        mConnectIQ.openAppRequest(mDevice, new IQApp(appId), new IQSendMessageListener() {
+          @Override
+          public void onMessageStatus(IQDevice iqDevice, IQApp iqApp, IQMessageStatus iqMessageStatus) {
+            promise.resolve(iqMessageStatus.name());
+          }
+        });
+      }
+    } catch (Exception e) {
+      promise.reject(e);
+    }
+  }
+
   public ReadableArray convertListToReadableArray(List<Object> list) {
     WritableArray writableArray = Arguments.createArray();
 

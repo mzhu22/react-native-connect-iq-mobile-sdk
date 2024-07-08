@@ -136,3 +136,7 @@ export function sendMessage(
     return ConnectIqMobileSdk.sendMessageDictionary(message, appId);
   }
 }
+
+export function openAppRequest(appId: string): Promise<String> {
+  return ConnectIqMobileSdk.openAppRequest(appId);
+}
