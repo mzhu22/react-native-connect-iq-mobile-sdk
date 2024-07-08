@@ -1,6 +1,6 @@
 {
-  "name": "react-native-connect-iq-mobile-sdk",
-  "version": "0.2.4",
+  "name": "@mzhu22-mayo/react-native-connect-iq-mobile-sdk",
+  "version": "0.2.6",
   "description": "This package provides a React Native wrapper around the Android and iOS Garmin Connect IQ Mobile SDKs",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -87,7 +87,6 @@
   "engines": {
     "node": ">= 16.0.0"
   },
-  "packageManager": "^yarn@1.22.15",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [

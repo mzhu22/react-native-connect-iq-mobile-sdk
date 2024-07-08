@@ -376,7 +376,7 @@ PODS:
   - React-jsinspector (0.72.4)
   - React-logger (0.72.4):
     - glog
-  - react-native-connect-iq-mobile-sdk (0.1.1):
+  - react-native-connect-iq-mobile-sdk (0.2.6):
     - ConnectIQ
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -678,7 +678,7 @@ SPEC CHECKSUMS:
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
   FlipperKit: 2efad7007d6745a3f95e4034d547be637f89d3f6
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 391d90cd90d4e4c823260cc4c2d01db2ccdc3c16
+  glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 81191603c4eaa01f5e4ae5737a9efcf64756c7b2
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
@@ -697,7 +697,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c7f826e40fa9cab5d37cab6130b1af237332b594
   React-jsinspector: aaed4cf551c4a1c98092436518c2d267b13a673f
   React-logger: da1ebe05ae06eb6db4b162202faeafac4b435e77
-  react-native-connect-iq-mobile-sdk: dd58c1a384cb899881e8d80228c7afa113c67235
+  react-native-connect-iq-mobile-sdk: c271c48c5732f1a698fe530a7121cbcafec5144d
   React-NativeModulesApple: edb5ace14f73f4969df6e7b1f3e41bef0012740f
   React-perflogger: 496a1a3dc6737f964107cb3ddae7f9e265ddda58
   React-RCTActionSheet: 02904b932b50e680f4e26e7a686b33ebf7ef3c00
@@ -721,4 +721,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e5b0e71da9d37d538b6c37f60a76296caf97d230
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.15.2
